@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chatboards.apps.ChatboardsConfig'
+    'django.contrib.sites',
+    'chatboards.apps.ChatboardsConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.twitter',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {
@@ -70,6 +79,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+'django.contrib.auth.backends.ModelBackend',
+"allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

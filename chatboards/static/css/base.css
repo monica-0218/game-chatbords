@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+button:focus {
+	outline: none;
+}
+.wrapper {
+    padding: 0 10%;
+}

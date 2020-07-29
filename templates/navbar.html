@@ -1,0 +1,36 @@
+{% load account %}
+{% load static %}
+<header class="header">
+    <nav class="header-inner">
+        <a class="header-title-link" href="/">掲示板</a>
+        <div>
+            <ul class="header-account">
+                {% if user.is_authenticated %}
+                <li>
+                    <button id="account-tab-opener">
+                        <img style="width: 50px; height: 50px; border-radius: 100%;"
+                            src="{{ user.socialaccount_set.all.0.get_avatar_url }}" />
+                        <p style="margin: auto 10px; font-size: 25px;">{{ user.username }}</p>
+                        <img id="dropdown-icon" src="{% static 'images/dropdown-icon.svg' %}" alt="">
+                    </button>
+                </li>
+                <div class="account-tab fadein">
+                    <a class="header-logout-link" href="{% url 'account_logout' %}">マイページ</a><br>
+                    <a class="header-logout-link" href="{% url 'account_logout' %}">アカウントランク</a>
+                    <hr>
+                    <a class="header-logout-link" href="{% url 'account_logout' %}">アカウント設定</a><br>
+                    <a class="header-logout-link" href="{% url 'account_logout' %}">ページ設定</a>
+                    <hr>
+                    <a class="header-logout-link" href="{% url 'account_logout' %}">ログアウト</a>
+                </div>
+                {% else %}
+                <li>
+                    <a class="header-login-link" href="{% url 'account_login' %}">
+                        ログイン・登録はこちらから
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
